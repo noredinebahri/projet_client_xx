@@ -1,6 +1,6 @@
-# Web Client of the Postal Street Map (PSM)
+# Web Client of the Postal Street Map
 
-This repository contains a `Web Client` of the `Postal Street Map` (PSM). The PSM domain is part of the **GeDaS** system. GeDaS stands for *Geodatensystem* (in German).
+This repository contains a `Web Client` of the `xxxx Street Map` (xSM). The xSM domain is part of the **GeDaS** system. GeDaS stands for *Geodatensystem* (in German).
 
 This web client was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.0.0.
 
