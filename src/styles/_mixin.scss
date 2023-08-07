@@ -1,0 +1,15 @@
+// Convert px to rem
+// 1- using a @mixing with 2 arguments
+@mixin toRem($property, $value) {
+    #{$property}: ($value / 16) + rem;
+}
+
+// 2- using a function with 1 arguments
+@function toRem($value) {
+    $remValue: calc($value / 16) + rem;
+    @return $remValue;
+}
+
+@mixin dropDownOptionsBoxShadow() {
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1), 0 10px 24px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.1);
+}

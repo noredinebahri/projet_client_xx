@@ -1,0 +1,31 @@
+<ngb-toast class="w-auto" *ngIf="showInfoOnStatusChangeSuccess" [autohide]="false">
+  <psm-toast (close)="closeInfoOnStatusChangeSuccess()">
+    <ng-container *ngIf="taskNumbers.length > 0">
+      <span *ngIf="taskNumbers.length === 1; else manyTasks"
+            [innerHTML]="'task.common.actions.statusChangeInfoStartOne' | translate:{taskNumber: taskNumbers[0]}"></span>
+      &nbsp;<span [innerHTML]="'task.common.actions.statusChangeInfoEnd' | translate:{taskStatus: taskStatus | psmTranslateEnum:'taskStatus'}"></span>
+      <button type="button" class="btn undo" (click)="notifyOnUndoStatusChangeRequest()">
+        <svg width="20" height="20" viewBox="0 0 72 72" fill="none">
+          <g id="icon/interface/undo arrow">
+            <path id="color" fill-rule="evenodd" clip-rule="evenodd"
+                  d="M63.0007 47.9913V56.9913H57.0007V47.9913C56.9913 39.7109 50.2811 33.0007 42.0007 32.9913H19.2435L30.6219 44.3701L26.3796 48.6124L7.75781 29.9913L26.3796 11.3701L30.6219 15.6124L19.2435 26.9913H42.0007C53.5933 27.0043 62.9877 36.3987 63.0007 47.9913Z"
+                  fill="#D40511"/>
+          </g>
+        </svg>&nbsp;<strong>{{'task.common.actions.undo' | translate}}</strong>
+      </button>
+    </ng-container>
+  </psm-toast>
+</ngb-toast>
+<ngb-toast class="w-auto" *ngIf="showInfoOnUndoSuccess" [autohide]="false">
+  <psm-toast (close)="closeInfoOnUndoStatusChangeSuccess()">
+    <ng-container *ngIf="taskNumbers.length > 0">
+      <span *ngIf="taskNumbers.length === 1; else manyTasks"
+            [innerHTML]="'task.common.actions.statusChangeInfoStartOne' | translate:{taskNumber: taskNumbers[0]}"></span>
+      &nbsp;<span [innerHTML]="'task.common.actions.statusChangeUndoInfoEnd' | translate"></span>
+    </ng-container>
+  </psm-toast>
+</ngb-toast>
+<ng-template #manyTasks>
+  <span *ngIf="taskNumbers.length > 1"
+        [innerHTML]="'task.common.actions.statusChangeInfoStartMany' | translate:{numberOfTasks: taskNumbers.length}"></span>
+</ng-template>

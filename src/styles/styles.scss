@@ -1,0 +1,134 @@
+@use "~ag-grid-community/styles" as ag;
+
+@import "variables";
+@import "typography";
+@import "mixin";
+// import bootstrap overwriting some variables
+$body-color: $primary-black-color;
+$body-bg: $primary-white-color;
+$primary: $primary-red-color;
+
+$btn-border-radius: .25rem;
+$btn-padding-x: 2rem;
+$btn-padding-y: .875rem;
+$btn-font-weight: 700;
+$btn-line-height: 1.25rem;
+
+$form-select-bg-size: 24px 24px;
+$form-select-indicator: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path fill-rule='evenodd' clip-rule='evenodd' d='M12 18.4141L2.04297 8.45706L3.45697 7.04306L12 15.5861L20.543 7.04306L21.957 8.45706L12 18.4141Z' fill='black'/></svg>");
+
+$form-floating-padding-y: .75rem;
+$input-padding-x: 0;
+$input-border-color: $grey500-color;
+$input-btn-focus-width: .125rem;
+$input-btn-focus-color: $grey200-color;
+$input-btn-focus-box-shadow: 0 0 0 $input-btn-focus-width $grey200-color;
+
+$font-family-base: Delivery, Verdana, sans-serif;
+$headings-font-weight: 800;
+$h1-font-size: 3rem;
+$h2-font-size: 2.5rem;
+$h3-font-size: 1.875rem;
+$h4-font-size: 1.5rem;
+$h5-font-size: 1.25rem;
+
+// toasts
+$toast-max-width: 400px;
+$toast-padding-x: 1.25rem;
+//$toast-font-size: 1rem;
+$toast-background-color: $primary-white-color;
+$toast-border-width: 0;
+$toast-border-radius: 0;
+$toast-box-shadow: 0px 1px 4px -1px rgba(0, 0, 0, 0.1), 0px 4px 14px rgba(0, 0, 0, 0.1), 0px 1px 2px rgba(0, 0, 0, 0.1);
+
+$accordion-button-active-bg: $primary-white-color;
+$accordion-button-active-color: $primary-black-color;
+
+$accordion-border-width: 0;
+$accordion-border-radius: unset;
+
+@import "~bootstrap/scss/functions";
+@import "~bootstrap/scss/variables";
+@import "~bootstrap/scss/maps";
+@import "~bootstrap/scss/mixins";
+@import "~bootstrap/scss/root";
+@import "~bootstrap/scss/reboot";
+@import "~bootstrap/scss/utilities";
+@import "~bootstrap/scss/containers";
+@import "~bootstrap/scss/grid";
+@import "~bootstrap/scss/forms";
+@import "~bootstrap/scss/buttons";
+@import "~bootstrap/scss/transitions";
+@import "~bootstrap/scss/dropdown";
+@import "~bootstrap/scss/button-group";
+@import "~bootstrap/scss/accordion";
+@import "~bootstrap/scss/close";
+@import "~bootstrap/scss/toasts";
+@import "~bootstrap/scss/spinners";
+
+// Helpers
+@import "~bootstrap/scss/helpers";
+// Utilities
+@import "~bootstrap/scss/utilities/api";
+
+// define custom AG Grid theme
+@include ag.grid-styles((
+  theme: psm,
+  extend-theme: alpine,
+  font-family: $font-family-base
+));
+
+// custom global styles
+html, body {
+  height: 100%;
+}
+
+// use these global style customisation variables first: https://www.ag-grid.com/angular-data-grid/global-style-customisation-variables/
+.ag-theme-alpine {
+  --ag-font-size: toRem(16);
+  --ag-header-cell-hover-background-color: rgb(240, 240, 240);
+  --ag-background-color: #{$primary-white-color};
+  --ag-header-background-color: #{$primary-white-color};
+  --ag-odd-row-background-color: #{$grey50-color};
+  --ag-grid-size: 8px; // if you change this value, set also the grid's row height properties as documented here: https://www.ag-grid.com/angular-data-grid/global-style-customisation-compactness/
+}
+
+.psm {
+  // close button
+  .btn-close.primary {
+    background: transparent escape-svg(url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='#{$primary-red-color}'><path d='M.293.293a1 1 0 0 1 1.414 0L8 6.586 14.293.293a1 1 0 1 1 1.414 1.414L9.414 8l6.293 6.293a1 1 0 0 1-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 0 1-1.414-1.414L6.586 8 .293 1.707a1 1 0 0 1 0-1.414z'/></svg>")) center / 1rem auto no-repeat;
+  }
+  // accordion
+  .accordion-item {
+    border-top: $primary-black-color solid toRem(2);
+
+    &:last-child{
+      border-bottom: $grey500-color solid  toRem(1);
+    }
+  }
+  .accordion-button {
+    @extend .text-section-header
+  }
+  // forms
+  .form-controls-with-bottom-border-only {
+    .form-control-plaintext {
+      border-bottom: 1px solid $grey500-color;
+    }
+
+    .form-control {
+      border-left: transparent;
+      border-top: transparent;
+      border-right: transparent;
+      border-radius: unset;
+
+      &:focus {
+        border-left: transparent;
+        border-top: transparent;
+        border-right: transparent;
+      }
+    }
+  }
+}
+.toast{
+  margin-right: 2%;
+}

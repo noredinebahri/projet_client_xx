@@ -1,0 +1,17 @@
+<ngb-toast
+  *ngFor="let toast of toasts$ | async"
+  [class]="toast.className"
+  [autohide]="toast?.autoHide ?? true"
+  [delay]="toast?.delayInMillis || 8000"
+  (hidden)="toastService.remove(toast)"
+>
+  <ng-template [ngIf]="toastContentIsTemplate(toast)" [ngIfElse]="text">
+    <psm-toast (close)="toastService.remove(toast)">
+      <ng-template [ngTemplateOutlet]="getTemplateContentOf(toast)"></ng-template>
+    </psm-toast>
+  </ng-template>
+
+  <ng-template #text>
+    <psm-toast (close)="toastService.remove(toast)">{{toast.content}}</psm-toast>
+  </ng-template>
+</ngb-toast>

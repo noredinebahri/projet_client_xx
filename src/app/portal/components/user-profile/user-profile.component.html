@@ -1,0 +1,20 @@
+<button type="button" class="user-profile btn d-flex flex-row justify-content-center align-items-center"
+        [attr.aria-expanded]="optionsOpened"
+        (click)="toggleBtn.toggle()"><span>{{userProfile?.name}}</span>
+  <div class="avatar d-flex justify-content-center align-items-center">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C9.929 2 8.25 3.679 8.25 5.75C8.25 7.821 9.929 9.5 12 9.5C14.0715 9.5 15.75 7.821 15.75 5.75C15.75 3.679 14.0715 2 12 2ZM18.64 12.481L20 22H4L5.36 12.481C5.4455 11.917 5.9295 11.5 6.5 11.5H9.5C9.5 12.881 10.6195 14 12 14C13.381 14 14.5 12.881 14.5 11.5H17.5C18.0705 11.5 18.5545 11.917 18.64 12.481Z" fill="#D40511"/>
+    </svg>
+  </div>
+</button>
+<psm-drop-down-toggle-button #toggleBtn
+                             (openClick)="openOptions()"
+                             (closeClick)="closeOptions()"></psm-drop-down-toggle-button>
+<div class="options d-flex flex-column" *ngIf="optionsOpened">
+  <button type="button" class="btn logout" (click)="notifyOnLogout()">
+    <span>{{'portal.header.userProfile.options.logout' | translate}}</span>
+    <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path fill-rule="evenodd" clip-rule="evenodd" d="M2.99303 13.5079C5.48262 15.9975 9.51904 15.9975 12.0086 13.5079C12.104 13.4126 12.1956 13.3151 12.2836 13.2154L11.2238 12.1538L11.2209 12.1509C11.1348 12.2525 11.0438 12.3514 10.9481 12.4475C9.04432 14.3513 5.95764 14.3513 4.05384 12.4475C2.15004 10.5437 2.15004 7.45699 4.05384 5.55318C5.95764 3.64937 9.04432 3.64937 10.9481 5.55317C11.0435 5.64857 11.1341 5.7469 11.2197 5.84815L11.2247 5.84324L12.2842 4.78574C12.196 4.68591 12.1042 4.58822 12.0088 4.49267C9.51551 2.02528 5.49731 2.0357 3.01687 4.51599C0.536429 6.99628 0.525777 11.0145 2.99303 13.5079ZM12.2844 11.0938L13.6306 9.74961L6.74797 9.74961V8.24961L13.6264 8.24961L12.2835 6.90452L13.3451 5.8447L16.5 9.00475L13.3442 12.1554L12.2844 11.0938Z" fill="#D40511"/>
+    </svg>
+  </button>
+</div>

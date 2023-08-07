@@ -1,0 +1,57 @@
+@import "variables";
+@import "mixin";
+
+.tasks {
+  width: 95%;
+  max-height: calc(100vh - #{$app-header-height} - #{$dialog-margin-top-bottom} - 12rem);
+  overflow-y: auto;
+  padding-right: 1rem;
+}
+
+.nbr-task {
+  font-weight: 400;
+  font-size: toRem(14);
+  line-height: toRem(16);
+  color: $grey600-color;
+  padding: toRem(10) toRem(0) toRem(19) toRem(0);
+}
+
+.task-box {
+  border-bottom: toRem(1) solid $grey600-color;
+  padding: toRem(10) toRem(8);
+
+  &.current-task {
+    background-color: $grey200-color;
+  }
+
+  .task-number {
+    font-size: toRem(16);
+    line-height: toRem(20);
+    font-style: normal;
+    font-weight: 700;
+  }
+
+  .task-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .task-type {
+      font-size: toRem(16);
+      line-height: toRem(20);
+      font-weight: 400;
+    }
+
+    .task-status {
+      font-weight: 400;
+      font-size: toRem(14);
+      line-height: toRem(16);
+    }
+
+  }
+
+  &:hover {
+    cursor: pointer;
+    background-color: $hovered-grey-color;
+  }
+}

@@ -1,0 +1,14 @@
+<textarea class="w-100 custom-textarea" rows="3"
+          [formControl]="commentFormControl"
+          [placeholder]="'task.details.comment.enterComment' | translate"></textarea>
+<div class="btn-action d-flex justify-content-between">
+  <div class="btn-option d-flex justify-content-end">
+    <button type="button" class="btn btn-outline-danger disabled"><i class="icon-assign"></i></button>
+    <button type="button" class="btn btn-send btn-primary"
+      (click)="notifyOnCommentChange()"
+      [disabled]="commentFormControl.invalid"
+      ><i class="icon-send"></i> {{'task.details.comment.send' | translate}}</button>
+  </div>
+  <button [hidden]="commentFormControl.invalid" (click)="clear()"
+          class="btn btn-outline-danger cancel">{{'task.details.comment.discard' | translate}}</button>
+</div>

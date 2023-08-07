@@ -1,0 +1,6 @@
+@import "variables";
+
+:host {
+  display: block;
+  padding: $dialog-margin-top-bottom $dialog-margin-left-right;
+}

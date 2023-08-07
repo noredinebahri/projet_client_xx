@@ -1,0 +1,96 @@
+@import "variables";
+@import "mixin";
+@import "icon";
+
+:host {
+  position: relative;
+}
+.action-picker{
+  height: toRem(50);
+}
+.btn:disabled {
+  background-color: #8c8c8c;
+  border: none;
+}
+.task-action {
+  cursor: pointer;
+  &-drop-down {
+    margin-left: -2%;
+    background: #ffffff;
+    border: 1px solid #8c8c8c;
+    border-radius: 4px;
+    padding: 0.7rem 0.2rem 0.8rem 0.3rem;
+    width: 16rem;
+    .choose-action {
+      padding-left: 0.22rem;
+    }
+    .floating-action {
+      position: absolute;
+      top: toRem(2);
+      left: 0.22rem;
+      font-weight: 400;
+      font-size: toRem(12);
+      color: $grey600-color;
+      line-height: toRem(14);
+    }
+    .icon-chevron-down {
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M12 18.4141L2.04297 8.45706L3.45697 7.04306L12 15.5861L20.543 7.04306L21.957 8.45706L12 18.4141Z' fill='black'/%3E%3C/svg%3E");
+    }
+    .icon-chevron-up {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' id='dhl_icons' viewBox='0 0 48 48'%3E%3Cpath d='M41.0859,33.9141,24,16.8286,6.9141,33.9141,4.0859,31.0859,24,11.1714,43.9141,31.0859Z'/%3E%3C/svg%3E%0A");
+    }
+    .icon-cancel {
+      right: 39%;
+      cursor: pointer;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' id='dhl_icons' viewBox='0 0 48 48'%3E%3Cpath d='M24,4A20,20,0,1,0,44,24,20,20,0,0,0,24,4ZM34.6066,33.1924l-1.4142,1.414L24,25.4141l-9.1924,9.1923-1.4142-1.414L22.5858,24l-9.1924-9.1924,1.4142-1.414L24,22.5859l9.1924-9.1923,1.4142,1.414L25.4142,24Z' fill='%23d40511'/%3E%3C/svg%3E%0A");
+    }
+  }
+  .hidden-chevron-down{
+    display: none;
+  }
+}
+
+.available-actions {
+  position: absolute;
+  z-index: 1050;
+  left: toRem(-7);
+  background-color: $primary-white-color;
+  width: 15.9rem;
+  box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.1), 0px 10px 24px rgba(0, 0, 0, 0.1),
+    0px 1px 2px rgba(0, 0, 0, 0.1);
+  ul,ol {
+    list-style: none;
+    padding: 0;
+  }
+  .disable-area{
+    pointer-events: none;
+  }
+  &-type {
+    color: $primary-black-color;
+    text-transform: capitalize;
+    font-weight: 700;
+    font-size: toRem(16);
+    line-height: toRem(20);
+    padding: 0.5rem 0.5rem 0.5rem 0.8rem;
+  }
+  li > button {
+    background: none;
+    border: none;
+    padding: 0.5rem 0 0.5rem 0;
+    text-transform: capitalize;
+  }
+  li > ol >li{
+    cursor: pointer;
+  }
+  li > ol > li:hover {
+    background: rgba(128, 128, 128, 0.05);
+  }
+
+  li > span {
+    color: #d40511;
+    margin-top: 3%;
+  }
+  .icon-checkmark {
+    background-image: url("data:image/svg+xml,%3Csvg id='dhl_icons' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Cpath fill='white' d='M19.03,36.7988,5.6162,23.9438l2.7676-2.8876L18.97,31.2012,39.5859,10.5859l2.8282,2.8282Z'/%3E%3C/svg%3E%0A");
+  }
+}

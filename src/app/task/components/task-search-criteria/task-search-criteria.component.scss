@@ -1,0 +1,15 @@
+@import "mixin";
+@import "variables";
+
+:host {
+  display: flex;
+  align-items: center;
+}
+
+select {
+  border-width: 0;
+  padding: 0 3rem 0 0;
+  font-weight: 800;
+  font-size: toRem(22);
+  line-height: toRem(32);
+}

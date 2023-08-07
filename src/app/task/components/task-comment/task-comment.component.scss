@@ -1,0 +1,63 @@
+@import "variables";
+@import "mixin";
+@import "icon";
+
+$avatar-size: 2.5rem;
+
+.comment {
+  list-style: none;
+  margin-top: 1rem;
+
+  .user-picture-around {
+    width: $avatar-size;
+    min-width: $avatar-size;
+    height: $avatar-size;
+    min-height: $avatar-size;
+    background-color: $grey50-color;
+    margin-right: 0.5rem;
+  }
+
+  .comment-content {
+    background-color: $grey50-color;
+    border-radius: toRem(4);
+    padding: toRem(12) toRem(7) toRem(12) toRem(7);
+
+    &:hover {
+      background-color: $grey100-color;
+    }
+
+    .comment-header {
+      font-size: toRem(14);
+      line-height: toRem(16);
+
+      strong {
+        color: $primary-black-color;
+      }
+
+      span {
+        color: $grey600-color;
+      }
+    }
+
+    .comment-text {
+      margin-top: toRem(12);
+      font-size: toRem(16);
+    }
+  }
+}
+
+.options {
+  &-list > li {
+    list-style: none;
+    padding: 0.6rem;
+    font-size: toRem(14);
+    line-height: toRem(16);
+    text-align: center;
+    color: $grey600-color;
+    cursor: pointer;
+  }
+
+  &-list > li:hover {
+    color: $primary-black-color;
+  }
+}

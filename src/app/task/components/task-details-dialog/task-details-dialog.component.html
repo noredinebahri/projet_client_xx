@@ -1,0 +1,41 @@
+<header class="d-flex align-items-center justify-content-between mb-4">
+  <h3 class="headline m-0">{{'task.details.title' | translate}}</h3>
+  <button type="button" class="btn-close primary" (click)="goBackToOverview()" aria-label="Close"></button>
+</header>
+<section class="d-flex align-items-center mb-4 w-100">
+  <psm-dialog-icon name="location"></psm-dialog-icon>
+  <div class="d-flex flex-column ms-3 me-2">
+    <label for="taskNumber"
+           class="form-label text-label mb-0">{{'task.overview.criteria.view.label' | translate}}</label>
+    <span id="taskNumber" class="mt-1">{{taskNumber$ | async}}</span>
+  </div>
+  <div class="flex-fill d-flex justify-content-end me-1">
+    <psm-task-action-message #taskActionMessage="taskActionMessage"
+                             (undoStatusChangeRequest)="undoStatusChange()"></psm-task-action-message>
+  </div>
+  <div class="btn-group align-items-center">
+    <psm-task-action-picker [availableTaskActions]="taskActions"
+                            (taskActionChange)="executeAction($event)"></psm-task-action-picker>
+  </div>
+</section>
+<section class="details" *ngIf="task$ | async as task" [class.is-loaded]="serviceActionInProgress">
+  <div class="details-show">
+    <ngb-accordion activeIds="ngb-panel-0">
+      <ngb-panel title="{{'task.details.accordion.details' | translate}}">
+        <ng-template ngbPanelContent>
+          <psm-simple-task-details [details]="task"></psm-simple-task-details>
+        </ng-template>
+      </ngb-panel>
+      <ngb-panel title="{{'task.details.accordion.progress' | translate}}">
+        <ng-template ngbPanelContent>
+          <psm-task-progress [taskDetails]="task"
+                             (commentChange)="saveCommentAndReloadTask($event)"></psm-task-progress>
+        </ng-template>
+      </ngb-panel>
+    </ngb-accordion>
+  </div>
+  <psm-map-viewer (psmEditorClick)="goToPsmEditor($event)"
+                  [boundingBox]="taskBoundingBox"
+                  [referenceObjectsAsGeoJson]="mapElementReferenceObjectsAsGeoJson"></psm-map-viewer>
+</section>
+

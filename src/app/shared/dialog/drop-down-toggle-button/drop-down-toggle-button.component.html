@@ -1,0 +1,8 @@
+<button class="btn drop-down-toggle" type="button" (click)="toggle()">
+  <svg [class.hidden]="open" [attr.aria-hidden]="open" width="24" height="24" viewBox="0 0 24 24">
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M12 18.4141L2.04297 8.45706L3.45697 7.04306L12 15.5861L20.543 7.04306L21.957 8.45706L12 18.4141Z" fill="black"/>
+  </svg>
+  <svg [class.hidden]="!open" [attr.aria-hidden]="!open" width="24" height="24" viewBox="0 0 48 48">
+    <path d="M41.0859,33.9141,24,16.8286,6.9141,33.9141,4.0859,31.0859,24,11.1714,43.9141,31.0859Z"/>
+  </svg>
+</button>

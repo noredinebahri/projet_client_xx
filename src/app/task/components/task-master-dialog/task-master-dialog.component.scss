@@ -1,0 +1,23 @@
+@import "variables";
+@import "mixin";
+
+:host {
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+}
+
+div.master {
+  height: 100%;
+  width: 33%;
+  padding: $dialog-margin-top-bottom 1rem 0 $dialog-margin-left-right;
+}
+
+div.toggle {
+  margin-right: 1.25rem;
+  height: 100%;
+  width: toRem(26);
+  cursor: pointer;
+  background-color: $grey50-color;
+  border: $grey300-color solid toRem(1);
+}

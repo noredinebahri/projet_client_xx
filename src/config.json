@@ -1,0 +1,4 @@
+{
+  "psmBackendUrl": "https://psm.gedas.test.azure.deutschepost.de",
+  "iamIssuerUrl": "https://iam.gedas.test.azure.deutschepost.de/realms/gedas-dev"
+}

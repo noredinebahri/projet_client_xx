@@ -1,0 +1,12 @@
+@import "variables";
+
+:host {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 3rem;
+  width: 3rem;
+  border-radius: .25rem;
+
+  border: $grey300-color solid .0625rem;
+}

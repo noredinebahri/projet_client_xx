@@ -1,0 +1,21 @@
+<h3 class="headline mb-4">{{'task.overview.title' | translate}}</h3>
+<section class="d-flex align-items-center mb-4 task-overview">
+  <psm-dialog-icon name="document"></psm-dialog-icon>
+  <psm-task-search-criteria class="flex-fill ms-3"
+                            [value]="searchCriteria$ | async"
+                            (valueChange)="updateUrlParamsOnNewSearchCriteria($event)"
+  ></psm-task-search-criteria>
+  <psm-task-action-message #taskActionMessage="taskActionMessage"
+                           (undoStatusChangeRequest)="undoStatusChange()"></psm-task-action-message>
+  <psm-task-action-picker
+                          [availableTaskActions]="taskActions"
+                          (taskActionChange)="executeActionOnTasks($event)"
+  ></psm-task-action-picker>
+</section>
+<psm-task-results class="flex-fill"
+                  [results]="searchResults$ | async"
+                  [sortingParameters]="sortingParameters$ | async"
+                  (sortingParametersChange)="updateUrlParamsOnNewSortingParameters($event)"
+                  (taskClick)="goToDetailsOf($event)"
+                  (taskSelectionChange)="updateActionsOf($event)"
+></psm-task-results>

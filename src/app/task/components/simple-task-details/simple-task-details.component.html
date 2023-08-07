@@ -1,0 +1,95 @@
+<article>
+  <h6>Aufgabe</h6>
+  <div class="row form-controls-with-bottom-border-only">
+    <div class="col">
+      <div class="form-floating">
+        <input id="taskType" readonly class="form-control-plaintext"
+               [value]="details?.type">
+        <label for="taskType">{{'task.details.type' | translate}}</label>
+      </div>
+    </div>
+    <div class="col">
+      <div class="form-floating">
+        <input id="createdAt" readonly class="form-control-plaintext"
+               [value]="details?.createdAt | psmFormatDateTime">
+        <label for="createdAt">{{'task.details.createdAt' | translate}}</label>
+      </div>
+    </div>
+  </div>
+  <div class="row form-controls-with-bottom-border-only">
+    <div class="col">
+      <div class="form-floating">
+        <input id="reportedBy" readonly class="form-control-plaintext"
+               [value]="details?.reportedBy">
+        <label for="taskType">Ersteller:in</label>
+      </div>
+    </div>
+    <div class="col">
+      <div class="form-floating">
+        <input id="lastChangedAt" readonly class="form-control-plaintext"
+               [value]="details?.lastChangedAt  | psmFormatDateTime">
+        <label for="createdAt">Zuletzt geandert</label>
+      </div>
+    </div>
+  </div>
+  <div class="row form-controls-with-bottom-border-only">
+    <div class="col">
+      <div class="form-floating">
+        <input id="status" readonly class="form-control-plaintext"
+               [value]="details?.status | psmTranslateEnum:'taskStatus'">
+        <label for="taskType">Status</label>
+      </div>
+    </div>
+    <div class="col">
+      <div class="form-floating">
+        <input id="assignedTo" readonly class="form-control-plaintext"
+               [value]="details?.assignedTo">
+        <label for="createdAt">Bearbeiter:in</label>
+      </div>
+    </div>
+  </div>
+  <div class="row form-controls-with-bottom-border-only">
+    <div class="col">
+      <div class="form-floating">
+        <textarea id="description" readonly class="form-control-plaintext"
+                  [value]="details?.description"></textarea>
+        <label for="taskType">Beschreibung</label>
+      </div>
+    </div>
+  </div>
+</article>
+<ng-container *ngIf="(details?.referenceObjects?.length ?? 0) > 0">
+  <article *ngFor="let refObject of details?.referenceObjects; index as i" class="ref-object">
+    <h6 *ngIf="(refObject | json) != ({} | json)">Referenzobjekt #{{i + 1}}</h6>
+    <div *ngFor="let propertyPair of getPairsOfObjectProperties(refObject)" class="row form-controls-with-bottom-border-only">
+      <div class="col" [ngClass]="{col: bothPropertiesPresentOf(propertyPair), 'col-6': !bothPropertiesPresentOf(propertyPair)}">
+        <div class="form-floating">
+          <input [attr.id]="propertyPair.prop1.key + '_' + i" readonly class="form-control-plaintext"
+                 [value]="propertyPair.prop1.value">
+          <label [attr.for]="propertyPair.prop1.key + '_' + i">{{propertyPair.prop1.key}}</label>
+          <button class="btn btn-sm" type="button" (click)="copyToClipboard(propertyPair.prop1.value)">
+            <svg fill="#8C8C8C" id="dhl_icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 48 48">
+              <path d="M28,35h4v9H6V17h8v4H10V40H28ZM16,6H42V33H16Zm4,4V29H38V10Z"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+      <div *ngIf="propertyPair.prop2"
+           [ngClass]="{col: bothPropertiesPresentOf(propertyPair), 'col-6': !bothPropertiesPresentOf(propertyPair)}">
+        <div class="form-floating">
+          <input [attr.id]="propertyPair.prop2.key + '_' + i"
+                 readonly
+                 class="form-control-plaintext"
+                 [value]="propertyPair.prop2.value">
+          <label [attr.for]="propertyPair.prop2.key + '_' + i">{{propertyPair.prop2.key}}</label>
+          <button class="btn btn-sm" type="button" (click)="copyToClipboard(propertyPair.prop2.value)">
+            <svg fill="#8C8C8C" id="dhl_icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 48 48">
+              <path d="M28,35h4v9H6V17h8v4H10V40H28ZM16,6H42V33H16Zm4,4V29H38V10Z"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </article>
+</ng-container>
+

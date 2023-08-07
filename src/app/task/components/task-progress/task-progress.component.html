@@ -1,0 +1,26 @@
+<div class="task-info d-flex justify-content-end">
+  <span class="task-info-created">{{'task.details.comment.theTask' | translate}}
+    <strong>{{taskDetails?.taskNumber}}</strong> {{'task.details.comment.wasCreated' | translate}}.</span>
+  <span class="task-info-created-at">{{(taskDetails?.createdAt | psmFormatDateTime:'date') + ' • ' + (taskDetails?.createdAt | psmFormatDateTime:'time')}} Uhr</span>
+</div>
+<ul *ngIf="taskHasComments(); else noComments">
+  <li *ngFor="let comment of taskDetails?.comments">
+    <psm-task-comment [comment]="comment"></psm-task-comment>
+  </li>
+</ul>
+<psm-task-comment-input (commentChange)="notifyOnCommentChange($event)"></psm-task-comment-input>
+<ng-template #noComments>
+  <div class="no-comment d-flex flex-column justify-content-center">
+    <div class="d-flex align-items-center justify-content-center">
+      <div class="around-icon d-flex justify-content-center align-items-center"><i class="icon-person"></i></div>
+      <div class="skeleton">
+        <div class="slt-1"></div>
+        <div class="slt-1"></div>
+      </div>
+    </div>
+    <div class="no-comment-info d-flex flex-column justify-content-center align-items-center">
+      <strong>{{'task.details.comment.noCommentMessage_1' | translate}}</strong>
+      <span>{{'task.details.comment.noCommentMessage_2' | translate}}</span>
+    </div>
+  </div>
+</ng-template>

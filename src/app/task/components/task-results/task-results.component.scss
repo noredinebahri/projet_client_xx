@@ -1,0 +1,25 @@
+@import "variables";
+@import "mixin";
+
+:host {
+  display: flex;
+  flex-direction: column;
+}
+
+ag-grid-angular {
+  width: 100%;
+  flex: 1 1 auto;
+}
+
+.top-grid {
+  padding: 1%;
+  font-weight: 400;
+  line-height: toRem(16);
+  font-size: toRem(14);
+  color: $grey600-color;
+}
+
+.table-brackets {
+  height: toRem(4);
+  background: $grey400-color;
+}

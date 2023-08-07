@@ -1,0 +1,19 @@
+<div class="top-grid">
+  <span class="nbr-task">{{numberOfResults + ' ' + ('task.overview.results.tasks' | translate)}}</span>&nbsp;•&nbsp;
+  <span class="sorted-by">{{sortingParametersLabel}}</span>
+</div>
+<div class="table-brackets"></div>
+<ag-grid-angular
+  class="ag-theme-psm"
+  [columnDefs]="columnDefs"
+  [defaultColDef]="defaultColDef"
+  (gridReady)="onGridReady($event)"
+  (selectionChanged)="notifyOnSelectionChange($event)"
+  (rowClicked)="notifyOnTaskClick($event)"
+  [suppressRowClickSelection]="true"
+  (sortChanged)="notifyOnSortingParamsUpdate($event)"
+  [rowSelection]="rowSelection"
+  [rowHeight]="rowHeightInPixels"
+  [headerHeight]="headerRowHeightInPixels"
+>
+</ag-grid-angular>

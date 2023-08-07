@@ -1,0 +1,14 @@
+<div class="nbr-task">{{numberOfResults + ' ' + ('task.overview.results.tasks' | translate)}}</div>
+<section class="tasks">
+  <div class="task-box"
+       *ngFor="let task of tasks" (click)="notifyOnClickOnTask(task.taskNumber)"
+       [class.current-task]="isTaskCurrent(task.taskNumber)">
+    <div class="task-number">
+      {{task.taskNumber}}
+    </div>
+    <div class="task-info">
+      <div class="task-type">{{task.type}}</div>
+      <div class="task-status">{{task.status | psmTranslateEnum: 'taskStatus' }}</div>
+    </div>
+  </div>
+</section>

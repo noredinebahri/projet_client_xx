@@ -1,0 +1,27 @@
+<div *ngIf="bounds; else noGeodata"
+     leaflet [leafletOptions]="options"
+     [leafletFitBounds]="bounds"
+     (leafletMapReady)="onMapReady($event)">
+</div>
+<div *ngIf="bounds" class="psm-editor-sticker d-flex justify-content-center align-items-center" (click)="notifyOnPsmClick()">
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <g clip-path="url(#clip0_980_48491)">
+      <mask id="mask0_980_48491" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="24">
+        <rect width="24" height="24" fill="#D9D9D9"/>
+      </mask>
+      <g mask="url(#mask0_980_48491)">
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M14 14.3637V18.55L10 17.15V5.44999L13.101 6.53536L14.6566 4.9798L9 2.99999L3 5.04999V21.225L9 18.9L15 21L21 18.95V7.36366L19 9.36366V17.55L16 18.55V12.3637L14 14.3637ZM8 17.15L5 18.3V6.44999L8 5.44999V17.15Z" fill="#FFFF"/>
+      </g>
+      <path fill-rule="evenodd" clip-rule="evenodd" d="M19.7148 6.57678L13.6349 12.6567H11.4531V10.4749L17.533 4.39496L19.7148 6.57678ZM21.0179 4.76699L19.2823 3.03135C19.2313 2.97988 19.1619 2.95093 19.0895 2.95093C19.017 2.95093 18.9476 2.97988 18.8966 3.03135L17.9186 4.00935L20.1005 6.19117L21.0771 5.21451C21.1843 5.1073 21.1252 4.87428 21.0179 4.76699Z" fill="#FFFF"/>
+    </g>
+    <defs>
+      <clipPath id="clip0_980_48491">
+        <rect width="24" height="24" fill="white"/>
+      </clipPath>
+    </defs>
+  </svg>&nbsp;
+  <span>PSM-Editor</span>
+</div>
+<ng-template #noGeodata>
+  <div class="no-geodata d-flex justify-content-center align-items-center">Keine Geodaten vorhanden</div>
+</ng-template>

@@ -1,0 +1,9 @@
+<div>
+  <label for="view" class="form-label text-label mb-0">{{'task.overview.criteria.view.label' | translate}}</label>
+  <select id="view" class="form-select form-select-lg" [formControl]="typeFormControl">
+    <option value="Open">{{'task.overview.criteria.view.open' | translate}}</option>
+    <option value="In Progress">{{'task.overview.criteria.view.inProgress' | translate}}</option>
+    <option value="Closed">{{'task.overview.criteria.view.closed' | translate}}</option>
+  </select>
+</div>
+

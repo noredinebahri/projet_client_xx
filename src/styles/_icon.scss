@@ -1,0 +1,12 @@
+$width-icon: 1.5rem;
+[class*="icon-"] {
+    background-repeat: no-repeat;
+}
+[class*="icon-"]:before {
+    content: "";
+    display: inline-block;
+    width: $width-icon;
+    background-repeat: no-repeat;
+    background-size: contain;
+    -webkit-background-size: contain;
+}

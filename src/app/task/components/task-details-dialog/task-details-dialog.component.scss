@@ -1,0 +1,33 @@
+@import "mixin";
+@import "variables";
+
+:host {
+  display: block;
+  width: 100%;
+  padding: $dialog-margin-top-bottom $dialog-margin-left-right $dialog-margin-top-bottom 0;
+}
+
+span#taskNumber {
+  font-weight: 800;
+  font-size: toRem(24);
+  line-height: toRem(32);
+  white-space: nowrap;
+}
+
+.details {
+  display: flex;
+
+  &.is-loaded {
+    opacity: 20%;
+  }
+
+  &-show {
+    width: 70%;
+    padding-right: 1%;
+  }
+
+  psm-map-viewer {
+    width: 30%;
+    height: 25rem;
+  }
+}

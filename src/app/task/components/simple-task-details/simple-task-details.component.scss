@@ -1,0 +1,26 @@
+@import "mixin";
+@import "variables";
+
+article {
+  h6 {
+    margin-bottom: 1.25rem;
+  }
+
+  .form-floating {
+    button {
+      position: absolute;
+      right: 0;
+      top: 1.25rem
+    }
+  }
+}
+
+article.ref-object {
+  h6 {
+    margin-top: 1.25rem;
+  }
+}
+
+textarea#description {
+  height: 5rem;
+}

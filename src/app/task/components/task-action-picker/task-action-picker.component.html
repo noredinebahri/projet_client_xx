@@ -1,0 +1,35 @@
+<div class="action-picker">
+<div class="d-flex task-action align-items-center justify-content-between">
+  <div class="d-flex task-action-drop-down justify-content-start" *ngIf="selectedTaskAction else initial">
+    <label class="floating-action">{{'task.details.action_picker.action' | translate}}</label>&nbsp;
+    <div class="selected-action">{{'task.details.action_picker.types.'+selectedTaskAction.type | translate}}: <strong>{{selectedTaskAction.value | psmTranslateEnum:'taskStatus'}}</strong></div>    <div (click)="cancelSelectedAction()" class="position-absolute icon-cancel icon-cancel-customized"></div>
+    <!-- &#x2715; -->
+  </div>
+  <button class="btn btn-primary" [disabled]="noTaskActionSelected()" (click)="notifyOnActionChange()">{{'task.details.action_picker.apply' | translate}}</button>
+</div>
+
+<ng-template #initial>
+  <div (click)="toggleAvailableActions()" class="d-flex justify-content-between task-action-drop-down">
+    <div class="choose-action">{{'task.details.action_picker.choose_action' | translate}}</div>
+    <div *ngIf="showAvailableActions && taskActions" class="icon-chevron-up"></div>
+    <div [ngClass]="{'hidden-chevron-down': showAvailableActions}" class="icon-chevron-down"></div>
+  </div>
+</ng-template>
+
+<div  class="available-actions" *ngIf="showAvailableActions && taskActions">
+  <ul>
+    <li class="available-actions-type" *ngFor="let taskAction of taskActions">
+      {{'task.details.action_picker.types.'+taskAction?.type | translate}}
+      <ol *ngIf="taskAction?.availableValues">
+        <li *ngFor="let value of taskAction?.availableValues" (click)="selectTaskActionAndClose(taskAction.type, value)" [ngClass]="{'disable-area': value === taskAction?.value}" class="d-flex justify-content-between">
+          <button type="button" [disabled]="value === taskAction?.value" >{{value | psmTranslateEnum:'taskStatus'}}</button>
+          <span *ngIf="value === taskAction?.value">&#10003;</span>
+        </li>
+      </ol>
+    </li>
+  </ul>
+
+</div>
+</div>
+
+

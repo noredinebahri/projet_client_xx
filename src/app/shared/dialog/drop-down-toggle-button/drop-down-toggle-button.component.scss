@@ -1,0 +1,11 @@
+button {
+  padding: 0;
+
+  &:hover, &:focus {
+    border-color: transparent;
+  }
+
+  svg.hidden { // hidden attribute is not added on svg elements
+    display: none !important;
+  }
+}

@@ -1,0 +1,64 @@
+@import "mixin";
+@import "variables";
+
+$avatar-size: 2.5rem;
+$avatar-border-width: .0625rem;
+$options-padding: 1rem;
+$min-width: 13rem;
+
+:host {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding-left: $options-padding;
+  min-width: $min-width;
+}
+
+button {
+  padding: 0;
+
+  &:focus, &:hover {
+    border-color: transparent;
+  }
+
+  &.user-profile {
+    margin-right: .5rem;
+  }
+
+  div.avatar {
+    height: $avatar-size;
+    width: $avatar-size;
+    background-color: $grey50-color;
+    border: $grey500-color solid $avatar-border-width;
+    border-radius: 50%;
+    margin-left: 1rem;
+  }
+}
+
+div.options {
+  position: absolute;
+  background-color: $primary-white-color;
+  padding: $options-padding;
+  top: calc(.125rem + #{$avatar-size} + (#{$app-header-height} - #{$avatar-size}) / 2);
+  z-index: 1040;
+  left: 0;
+  @include dropDownOptionsBoxShadow();
+  min-width: $min-width;
+
+  button {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    font-weight: normal;
+
+    &:not(:last-child) {
+      margin-bottom: 1rem;
+    }
+
+    *:not(:last-child) {
+      margin-right: 1rem;
+    }
+  }
+}

@@ -1,0 +1,109 @@
+@import "variables";
+@import "mixin";
+@import "icon";
+
+:host {
+  display: flex;
+  flex-direction: column;
+  padding: $dialog-margin-top-bottom $dialog-margin-left-right $dialog-margin-top-bottom 0;
+}
+
+.block-message {
+    height:70vh;
+        .skeleton {
+            width: toRem(600);
+            height: toRem(62);
+            padding: toRem(12);
+            margin-left: toRem(6);
+            background: $grey50-color;
+            border-radius: toRem(4);
+
+          }
+
+        font-size: toRem(16);
+        text-align: center;
+          strong {
+            color: $primary-black-color;
+          }
+          span {
+            color: $grey600-color;
+          }
+}
+.top{
+    margin-bottom: 5%;
+}
+.icon-circle {
+    width: 48px;
+    height: 48px;
+    background: #FFFFFF;
+    border: 1px solid #CCCCCC;
+    border-radius: 4px;
+    background-image: url("data:image/svg+xml,%3Csvg id='dhl_icons' xmlns='http://www.w3.org/2000/svg'  viewBox='0 0 48 48'%3E%3Cpath d='M24,4A20,20,0,1,0,44,24,20,20,0,0,0,24,4Zm0,35A15,15,0,1,1,39,24,15,15,0,0,1,24,39Zm0-28A13,13,0,1,0,37,24,13.0148,13.0148,0,0,0,24,11Zm0,21a8,8,0,1,1,8-8A8,8,0,0,1,24,32Z' fill='%23d40511'/%3E%3C/svg%3E%0A");
+    }
+    .sklt-1 {
+        margin-left: 10%;
+        width: toRem(81);
+        height: toRem(12);
+        background: $grey200-color;
+        margin-top: 1%;
+        list-style: none;
+        margin-bottom: 8%;
+    }
+    .sklt-2 {
+        margin-left: 10%;
+        width: toRem(115);
+        height: toRem(16);
+        background: $grey200-color;
+        list-style: none;
+    }
+    .sklt-3 {
+        width: toRem(300);
+        height: toRem(24);
+        background: $grey200-color;
+        list-style: none;
+        margin-top: 5px;
+    }
+    .sklt-4 {
+        width: toRem(250);
+        height: toRem(24);
+        background: $grey200-color;
+        list-style: none;
+        margin-top: 5px;
+    }
+    .line {
+        width: 414px;
+        margin-top: 1%;
+        height: 1px;
+        left: 0px;
+        right: 0px;
+        top: 0px;
+        border: 1px solid #8C8C8C;
+    }
+    .icon-chevron-down {
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath  d='M12 18.4141L2.04297 8.45706L3.45697 7.04306L12 15.5861L20.543 7.04306L21.957 8.45706L12 18.4141Z' fill='black'/%3E%3C/svg%3E");
+      }
+      .accordion-1{
+        display: block;
+        position: relative;
+      }
+.message{
+    margin: 5% 5% 5% 5%;
+    p {
+        font-weight: 800;
+        font-size: 24px;
+        line-height: 32px;
+        /* identical to box height, or 133% */
+
+        text-align: center;
+
+        /* primary/black.500 */
+
+        color: #000000;
+    }
+}
+.btn-action {
+    .icon-plus {
+        background-image: url("data:image/svg+xml,%3Csvg id='dhl_icons' xmlns='http://www.w3.org/2000/svg'  viewBox='0 0 48 48'%3E%3Cpath d='M42,26H26V42H22V26H6V22H22V6h4V22H42Z' fill='%23d40511'/%3E%3C/svg%3E%0A");
+    }
+
+}

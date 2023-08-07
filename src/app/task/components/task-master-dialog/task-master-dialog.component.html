@@ -1,0 +1,32 @@
+<div [hidden]="detailsExpanded$ | async" class="master">
+  <h3 class="headline mb-4">{{'task.details.master.title' | translate}}</h3>
+  <section class="d-flex align-items-center mb-4">
+    <psm-dialog-icon name="document"></psm-dialog-icon>
+    <psm-task-search-criteria class="ms-3"
+                              [value]="searchCriteria$ | async"
+                              (valueChange)="updateUrlParamsOnNewSearchCriteria($event)"
+    ></psm-task-search-criteria>
+  </section>
+
+  <psm-simple-task-results [results]="searchResults$ | async"
+                           [currentTaskNumber]="currentTaskNumber"
+                           (taskClick)="showDetailsOf($event)"></psm-simple-task-results>
+</div>
+<div class="toggle d-flex align-items-center justify-content-center" (click)="toggle()">
+  <svg *ngIf="detailsExpanded$ | async else chevronBack" width="18" height="18" viewBox="0 0 18 18" fill="none">
+    <path fill-rule="evenodd" clip-rule="evenodd"
+          d="M6.3428 16.4678L5.28223 15.4072L11.6893 9.00001L5.28223 2.5928L6.3428 1.53223L13.8107 9.00001L6.3428 16.4678Z"
+          fill="#8C8C8C"/>
+  </svg>
+  <ng-template #chevronBack>
+    <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+      <path fill-rule="evenodd" clip-rule="evenodd"
+            d="M11.6574 16.4678L4.18945 9L11.6574 1.53221L12.718 2.59279L6.3109 9L12.718 15.4072L11.6574 16.4678Z"
+            fill="#8C8C8C"/>
+    </svg>
+  </ng-template>
+</div>
+<div class="w-100">
+  <router-outlet></router-outlet>
+</div>
+

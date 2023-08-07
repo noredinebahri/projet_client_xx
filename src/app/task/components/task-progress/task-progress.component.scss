@@ -1,0 +1,62 @@
+@import "variables";
+@import "mixin";
+@import "icon";
+:host {
+  display: block;
+}
+ul {
+  list-style: none;
+  height: toRem(440);
+  overflow-y: auto;
+  padding: 0.5%;
+  margin: toRem(12) 0 toRem(12) 0;
+}
+.task-info {
+  text-align: right;
+  font-size: toRem(16);
+  line-height: toRem(16);
+  &-created-at {
+    color: $grey600-color;
+    padding-left: 1rem;
+  }
+  &-created {
+    color: $primary-black-color;
+  }
+}
+.no-comment {
+  height: toRem(400);
+  .icon-person {
+      background-image: url("data:image/svg+xml,%3Csvg id='dhl_icons' xmlns='http://www.w3.org/2000/svg'  viewBox='0 0 48 48'%3E%3Cpath d='M23,27.8994V44H8l2.7-19A2.3618,2.3618,0,0,1,13,23h6A5.0013,5.0013,0,0,0,23,27.8994ZM25,44V27.8994A5.0013,5.0013,0,0,0,29,23h6a2.3618,2.3618,0,0,1,2.3,2L40,44Zm4-9h6V32H29ZM24,19a7.5,7.5,0,1,0-7.5-7.5A7.5,7.5,0,0,0,24,19Z' fill='%23d40511'/%3E%3C/svg%3E%0A");
+  }
+  .around-icon {
+    width:toRem(40);
+    height:toRem(40);
+    border-radius: toRem(25);
+    background: $grey50-color;
+  }
+  .skeleton {
+    width: toRem(448);
+    height: toRem(62);
+    padding: toRem(12);
+    margin-left: toRem(6);
+    background: $grey50-color;
+    border-radius: toRem(4);
+      .slt-1 {
+        width: toRem(424);
+        height: toRem(15);
+        background: $grey200-color;
+        margin-top: 1%;
+        list-style: none;
+      }
+  }
+  .no-comment-info {
+    font-size: toRem(16);
+    text-align: center;
+      strong {
+        color: $primary-black-color;
+      }
+      span {
+        color: $grey600-color;
+      }
+  }
+}

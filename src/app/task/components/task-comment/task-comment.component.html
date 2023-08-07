@@ -1,0 +1,16 @@
+<div class="comment w-100 d-flex align-items-start">
+    <span class="user-picture-around rounded-circle"></span>
+    <div class="comment-content w-100 d-flex flex-column">
+        <div class="comment-header d-flex justify-content-between">
+            <strong class="">{{comment?.createdBy}}</strong>
+            <span class="">{{(comment?.createdAt | psmFormatDateTime:'date') + ' • ' + (comment?.createdAt | psmFormatDateTime:'time')}} Uhr</span>
+        </div>
+        <div class="comment-text">{{comment?.text}}</div>
+    </div>
+</div>
+<div class="options">
+    <ul class="options-list d-flex justify-content-end">
+        <li>{{'task.details.comment.edit' | translate}}</li>
+        <li>{{'task.details.comment.delete' | translate}}</li>
+    </ul>
+</div>

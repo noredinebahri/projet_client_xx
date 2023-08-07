@@ -1,0 +1,7 @@
+<psm-toast-container></psm-toast-container>
+<psm-header [userProfile]="userProfile$ | async" (logout)="logout()" (mapEditorClick)="goToMapEditor()"></psm-header>
+<main class="flex-fill">
+  <ng-container *ngIf="userProfile$ | async as userProfile">
+    <router-outlet></router-outlet>
+  </ng-container>
+</main>

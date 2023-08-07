@@ -1,0 +1,59 @@
+pool:
+  name: xcxcxcxc-Build
+trigger:
+- feature/*       
+- dev
+- release
+
+resources:
+  repositories:
+    - repository: psm-client 
+      type: githubenterprise
+      endpoint: Git DHL Jonas PAT
+      name: xcxcxcxc-Geodatensystem/psm-client
+      ref: $(Build.SourceBranch)
+stages:
+  - stage: PSM_Client_Build
+    jobs:
+      - job: BUILD
+        steps:
+          - task: AzureKeyVault@2
+            inputs:
+              azureSubscription: 'xcxcxcxc Resources'
+              KeyVaultName: 'xcxcxcxc-npi-kv1'
+              SecretsFilter: '*'
+              RunAsPreJob: true
+          - checkout: psm-client
+            clean: true
+            fetchDepth: 0
+          - script: 'echo "$(PIPELINE-css-qhcr-robot-xcxcxcxc)" | docker login -u css_qhcr_robot_xcxcxcxc --password-stdin dpdhl.css-qhcr-pi.azure.xxxxxxxxxx.de'
+            displayName: Login to Docker Registry
+          - script: |
+              chmod +x ./ci-cd/get-package-version.sh
+              echo "##vso[task.setvariable variable=PSM_CLIENT_VERSION]$(./ci-cd/get-package-version.sh)"
+            displayName: 'Get PSM Client Version'
+          - script: >
+              docker build -f ci-cd/ci.Dockerfile -t psm-client-build-results:$PSM_CLIENT_VERSION . 
+              --build-arg ARTIFACTORY_TOKEN="$(lcm-artifactory-key)" 
+              --build-arg NPM_AUTH="$(artifactory-npm-auth-key)" 
+              --build-arg SOURCE_BRANCH="$(Build.SourceBranch)"
+              --build-arg PSM_CLIENT_VERSION="$PSM_CLIENT_VERSION"
+              --build-arg SONAR_TOKEN="$(sonarqube-secret)" 
+
+            displayName: Build PSM Client in Dockerbuild and upload it as tar to artifactory
+            
+          - script: 'sudo rm -f /home/adminuser/xcxcxcxc_testresults/unit-tests/test-execution-report.xml'
+            displayName: Cleanup unit test direcotry
+            
+          - script: >
+              docker run -v /home/adminuser/xcxcxcxc_testresults/unit-tests/:/opt/mount/ psm-client-build-results:$PSM_CLIENT_VERSION sh 
+              -c "cp -r /opt/test-execution-report.xml /opt/mount/"
+            displayName: Copy unit test results (outside of docker container)   
+          - task: PublishTestResults@2
+            inputs:
+              testResultsFormat: 'JUnit'
+              testResultsFiles: '/home/adminuser/xcxcxcxc_testresults/unit-tests/test-execution-report.xml'
+              failTaskOnFailedTests: true
+              testRunTitle: 'Unit Tests'
+          - script: 'sudo rm -f /home/adminuser/xcxcxcxc_testresults/unit-tests/test-execution-report.xml'
+            displayName: CLEANUP UNIT TEST DIRECTORY
